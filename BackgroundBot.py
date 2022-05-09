@@ -25,7 +25,12 @@ class BackgroundBot:
 
         print(f"BackgroundBot {self.LoggedUser['id']} Started {self.channelUsername} {self.IDChannelFollowers}")
 
-        async with TelegramClient(StringSession(self.session), self.LoggedUser["API_ID"], self.LoggedUser["API_HASH"]) as client:
+        c: TelegramClient = TelegramClient(StringSession(self.session), self.LoggedUser["API_ID"], self.LoggedUser["API_HASH"])
+        await c.connect()
+        if not await c.is_user_authorized():
+            return
+
+        async with c as client:
 
             print("OK")
 

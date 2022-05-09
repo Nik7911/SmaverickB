@@ -32,9 +32,6 @@ class BOT:
             self.ArchivedVoips = js
 
     async def start(self):
-        c:TelegramClient = TelegramClient("BOT", Users[0]["API_ID"], Users[0]["API_HASH"])
-        await c.connect()
-        print(await c.is_user_authorized())
         async with TelegramClient("BOT", Users[0]["API_ID"], Users[0]["API_HASH"]) as client:
             print("...SmaverickBOT Started...")
 
